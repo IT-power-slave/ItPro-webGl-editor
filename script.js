@@ -1,9 +1,12 @@
 class viewer {
-  constructor() {
-    let scene, camera, renderer, cube, cubeEdges;
+  constructor(anim) {
+    let scene,
+      camera,
+      renderer,
+      cube,
+      cubeEdges,
+      animation = anim;
   }
-  //init();
-  //animate();
 
   init(part) {
     this.scene = new THREE.Scene();
@@ -47,19 +50,42 @@ class viewer {
 
   animate() {
     requestAnimationFrame(this.animate.bind(this));
-    this.cube.rotation.x += 0.01;
-    this.cube.rotation.y += 0.01;
-    this.cubeEdges.rotation.x += 0.01;
-    this.cubeEdges.rotation.y += 0.01;
-    this.renderer.render(this.scene, this.camera);
+    animation1(
+      this.cube,
+      this.cubeEdges,
+      this.renderer,
+      this.scene,
+      this.camera
+    );
+    //this.cube.rotation.x += 0.01;
+    //this.cube.rotation.y += 0.01;
+    //this.cubeEdges.rotation.x += 0.01;
+    //this.cubeEdges.rotation.y += 0.01;
+    //this.renderer.render(this.scene, this.camera);
   }
 }
 
-var viewerPerpective = new viewer();
+function animation1(cube, cubeEdges, renderer, scene, camera) {
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  cubeEdges.rotation.x += 0.01;
+  cubeEdges.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+
+function animation2(cube, cubeEdges, renderer, scene, camera) {
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  cubeEdges.rotation.x += 0.01;
+  cubeEdges.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+
+var viewerPerpective = new viewer(animation1);
 viewerPerpective.init('View3D');
-var viewerPerpectiveX = new viewer();
+var viewerPerpectiveX = new viewer(animation2);
 viewerPerpectiveX.init('ViewX');
-var viewerPerpectiveY = new viewer();
+var viewerPerpectiveY = new viewer(animation1);
 viewerPerpectiveY.init('ViewY');
-var viewerPerpectiveZ = new viewer();
+var viewerPerpectiveZ = new viewer(animation2);
 viewerPerpectiveZ.init('ViewZ');
