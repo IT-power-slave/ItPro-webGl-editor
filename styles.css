@@ -20,7 +20,7 @@ body {
 
 .centerPart {
   flex: 1 1 50%; /* flex-grow, flex-shrink, flex-basis */
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   height: 50%;
   box-sizing: border-box; /* to include border in height and width calculations */
   overflow: hidden;

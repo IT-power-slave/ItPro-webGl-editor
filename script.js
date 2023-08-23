@@ -5,7 +5,7 @@ class viewer {
   //init();
   //animate();
 
-  init() {
+  init(part) {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
       75,
@@ -17,7 +17,7 @@ class viewer {
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2); // updated for 2x2 layout
-    document.getElementById('View3D').appendChild(this.renderer.domElement);
+    document.getElementById(part).appendChild(this.renderer.domElement);
 
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -56,4 +56,10 @@ class viewer {
 }
 
 var viewerPerpective = new viewer();
-viewerPerpective.init();
+viewerPerpective.init('View3D');
+var viewerPerpectiveX = new viewer();
+viewerPerpectiveX.init('ViewX');
+var viewerPerpectiveY = new viewer();
+viewerPerpectiveY.init('ViewY');
+var viewerPerpectiveZ = new viewer();
+viewerPerpectiveZ.init('ViewZ');
